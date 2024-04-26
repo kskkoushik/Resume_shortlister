@@ -11,21 +11,20 @@ os.environ['LANGCHAIN_TRACING_V2'] = 'True'
 
 prompt = ChatPromptTemplate.from_messages(
     [
-        ('system', """
-Hey Act Like a skilled or very experience ATS(Application Tracking System)
-with a deep understanding of tech field,software engineering,data science ,data analyst
-and big data engineer. Your task is to evaluate the resume based on the given job description.
-You must consider the job market is very competitive and you should provide 
-best assistance for improving thr resumes. Assign the percentage Matching based 
-on Jd and
-the missing keywords with high accuracy
-resume:{resume}
-description:{description}
+        ('system', """you are an AI application Tracking System having lots of knowledge in hiring procees and expert in finding how much does a resume suit to a particular job description , you read evaluate and analyse the resume data provided to you by the user and provide him with matching score in percentage"""),
+        ('user' , '''analyze my resume and provide matching score , 
+         here is my resume data :{resume}
+         this is the job description with which you should compare my resume data and provide matching score : {description}
+         
+         provide the output in following structure as shown in the below example:
 
-I want the response as per below structure
-{{"JD Match": "%", "MissingKeywords": [], "Profile Summary": ""}}
-"""),
-        ('user' , 'analyze my resume and provide matching score')
+         {{ matching score : 82%
+            reason : The skills and projects doesnt match the requirements in provided job description}}
+
+            Follow the above structure and see that the reason is clear and short
+         '''
+         
+         )
     ]
 )
 
