@@ -32,7 +32,7 @@ llm = ChatGoogleGenerativeAI(model='gemini-pro')
 output_parser = StrOutputParser()
 chain = prompt | llm | output_parser
 
-st.title('Resume Shortlister')
+st.title('Resumes Shortlister')
 upload_files = st.file_uploader('Upload resumes', type='pdf', accept_multiple_files=True)
 
 job_description = st.text_input('Enter job description')
